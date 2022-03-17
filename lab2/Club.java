@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class club{
+Public class Club{
     //1
     public class players{
     String pid;
@@ -12,7 +12,31 @@ public class club{
     String p_phone_num;
     String p_email;
     String p_address;
+    String p_sponser;
+    String p_sponser_amount;
+    String p_doj;
     float p_salary;
+
+    public static void addplayer(){
+
+    }
+
+    public static void edit_p_detail(){
+
+    }
+
+    public static void deleteplayer(){
+
+    }
+
+    public static void p_salary_cal(){
+
+    }
+
+    public static void networth_cal(){
+
+    }
+
     }
 
     //2 
@@ -22,10 +46,27 @@ public class club{
         String m_lname;
         int m_age;
         String m_address;
-        String m_contact;
+        String m_phone_num;
+        String m_email;
         String m_doj;
         String m_dor;
         float m_salary;
+
+        public static void addmanager(){
+
+        }
+
+        public static void edit_m_detail(){
+
+        }
+
+        public static void deletemanager(){
+
+        }
+
+        public static void m_salary_cal(){
+
+        }
     }
 
     //3
@@ -36,6 +77,19 @@ public class club{
         int eq_quantity;
         String availability;
         String comments;
+
+        public static void addeq(){
+
+        }
+
+        public static void deleteeq(){
+
+        }
+
+        public static void edit_eq(){
+
+        }
+
     }
 
     //4
@@ -43,10 +97,29 @@ public class club{
         String a_fname;
         String a_lname;
         int a_age;
-        String a_contact;
+        String a_phone_num;
+        String a_email;
         String a_designation;
+        String a_doj;
+        String a_dor;
         float a_salary;
         String a_experience;
+
+        public static void addadmin(){
+
+        }
+
+        public static void editadmin(){
+
+        }
+
+        public static void deleteadmin(){
+
+        }
+
+        public static void admin_sal_cal(){
+
+        }
     }
 
     //5
@@ -75,7 +148,8 @@ public class club{
     public class vendors{
         String vid;
         String v_name;
-        String v_contact;
+        String v_phone_num;
+        String v_email;
         String v_address;
         String v_type;
         String v_order;
@@ -87,8 +161,9 @@ public class club{
     public class sponsers{
         String sid;
         String s_name;
-        String s_point_of_contact;
-        String s_contact;
+        String s_poc;
+        String s_phone_num;
+        String s_email;
         String s_address;
         String s_type;
         String s_start_date;
