@@ -1,7 +1,4 @@
 import java.io.*;
-import java.sql.*;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 public class club1{
     //1
@@ -16,47 +13,55 @@ public class club1{
     String p_address;
     float p_salary;
 
-    players(String pid, String f, String l, int age, int jer, String pp, String contact, String address, float sal) 
+    players(String pid, String f, String l, int age, int jer, String pp, String contact, String address, float sal)
     {
-        pid = pid;
-        p_fname = f;
-        p_lname = l;
-        p_age = age;
-        jersey = jer;
-        play_position = pp;
-        p_contact = contact;
-        p_address = address;
-        p_salary = sal;
+        System.out.println("****Player Class****");
+        this.pid = pid;
+        this.p_fname = f;
+        this.p_lname = l;
+        this.p_age = age;
+        this.jersey = jer;
+        this.play_position = pp;
+        this.p_contact = contact;
+        this.p_address = address;
+        this.p_salary = sal;
+    }
+    void display()
+    {
+        System.out.println(" Id "+this.pid);
+        System.out.println(" First Name : "+this.p_fname);
+        System.out.println(" Last Name : "+this.p_lname);
+        System.out.println(" Age :  "+this.p_age);
+        System.out.println(" Contact : "+this.p_contact);
+        System.out.println(" Address : "+this.p_address);
+        System.out.println(" Salary : "+this.p_salary);
     }
 
-    public static void playerdetails(){
-        System.out.println("Name: "+ p_fname +" "+ p_lname);
-        System.out.println("Jersey NO.: "+ jersey);
-        System.out.println("Age: "+p_age);
-        System.out.println("Play position: "+ play_position);
-        System.out.println("Contact: "+ p_contact);
-    }
+    public void calculate()  //calculating all the parameters
+     {
+        float HRA=(10/100)*p_salary;
+        float DA=(73/100)*p_salary;
+        float GS=p_salary+DA+HRA;
+        float incometax=(30/100)*GS;
+        float netsalary=GS-incometax;
+     }
+    // public void practice_session()
+    // {
+    //     // practice sessions
+    //     //key points to practice or train on
 
-    void practice_session()
-    {
-        // practice sessions
-        //key points to practice or train on
+    // }
 
-    }
-
-    void payment()
-    {
-        //payment if they played 
-        //if the won the to
-    }
-    void game_details()
-    {
-        //details of the game they are going to play 
-    }
-    void 
+    // public void payment()
+    // {
+    //     //payment if they played 
+    //     //if the won the to
+    // }
+    // public void game_details()
+    // {
+    //     //details of the game they are going to play 
+    // }
     
-    }
-
     //2 
     public class manager{
         String mid;
@@ -69,156 +74,44 @@ public class club1{
         String m_dor;
         float m_salary;
         String schedule;
+   
+    // manager(String mid; String f; String l; int age, String contact, String address, float sal, String schedule)
+    // {
+    //     System.out.println("****Manager Class****");
+    //     this.mid = mid;
+    //     this.m_fname = f;
+    //     this.m_lname = l;
+    //     this.m_age = age;
+    //     this.m_contact = contact;
+    //     this.m_address = address;
+    //     this.m_salary = sal;
+    //     this.schedule = schedule;
+    // }
+    // void display()
+    // {
+    //     System.out.println(" Id "+this.mid);
+    //     System.out.println(" First Name : "+this.m_fname);
+    //     System.out.println(" Last Name : "+this.m_lname);
+    //     System.out.println(" Age :  "+this.m_age);
+    //     System.out.println(" Contact : "+this.m_contact);
+    //     System.out.println(" Address : "+this.m_address);
+    //     System.out.println(" Salary : "+this.m_salary);
+    // }
 
-    manager((String mid, String f, String l, int age, String contact, String address, float sal,String schedule) 
-    {
-        mid = pid;
-        m_fname = f;
-        m_lname = l;
-        m_age = age;
-        m_contact = contact;
-        m_address = address;
-        m_salary = sal;
-        schedule = schedule;
-    }
-
-        //salary of the managers
-        public void calculateNetSalary (double pfPercentage){
-        double pfAmount = m_salary * (pfPercentage / 100);
-        double netSalary = m_salary - pfAmount;
-        this.setNetSalary(netSalary);
-    }
-        }
-        public void schedeuleEvent(ArrayList ia){
-        try{
-            String query="insert into event ( date,venue,team1,team2) values('"+ia.get(0)+" "+ia.get(1)+"','"+ia.get(2)+"','"+ia.get(3)+"','"+ia.get(4)+"');";
-            st.executeUpdate(query);
-            System.out.println(query);
-            JOptionPane.showMessageDialog(null, "Event scheduled successfully!");
-            
-        }
-        catch(SQLException e){
-            JOptionPane.showMessageDialog(null, "Failed to schedule event!");
-            System.out.println(e);
-            e.printStackTrace();
-            
-        }
-    }
-    public void scheduleSession(ArrayList ia){
-        try{
-            String query = "insert into "+ia.get(0)+" ( date,place) values('"+ia.get(1)+" "+ia.get(2)+"','"+ia.get(3)+"');";
-            st.executeUpdate(query);
-            System.out.println(query);
-            JOptionPane.showMessageDialog(null, ia.get(0)+" scheduled successfully!");
-            
-        }
-        catch(SQLException e){
-            JOptionPane.showMessageDialog(null, "Failed to schedule "+ia.get(0)+" session!");
-            System.out.println(e);
-            e.printStackTrace();
-            
-        }
-    }
-    public ResultSet getSession(String str){
-        try{
-            String query="select DATE_FORMAT(date, '%Y-%m-%d') as date,time_FORMAT(date, '%h:%i') as time ,"
-                    + "time_FORMAT(date, '%p') as ampm, place from `"+str+"` WHERE date>CURRENT_DATE or date=CURRENT_DATE  order by datediff(date,CURRENT_DATE);";
-            rs=st.executeQuery(query);
-            System.out.println(query);
-            return rs;
-            
-        }
-        catch(SQLException e){
-            System.out.println("Error: "+e);
-            e.printStackTrace();
-        }
-        return null;
-    }
-    
-
-        void team()
-        {
-            // selecting the players to the teams
-        }
-        void budge()
-        {
-            //allocating the budget for the players and employees
-        }
-    }
-
-    //3
-    public class equipments{
-        String eqid;
-        String eq_name;
-        String eq_type;
-        int eq_quantity;
-        String availability;
-        String comments;
-
-        
-    }
-
-    //4
-    public class auction{
-        String auid;
-        String sport_association;
-        String eid;
-        String pid;
-        float bidding_amount;
-        String contract_start_date;
-        String contract_end_date;
-
-    }
-
-    //6
-    public class expenses{
-        String eid;
-        String title;
-        String description;
-        String items;
-        int price;
-        int quantity;
-        int amount;
-        int total_amount;
-
-
-    }
-
-    //7
-    public class vendors{
-        String vid;
-        String v_name;
-        String v_contact;
-        String v_address;
-        String v_type;
-        String v_order;
-        String v_payment;
-    }
-
-    //8
-    public class sponsers{
-        String sid;
-        String s_name;
-        String s_point_of_contact;
-        String s_contact;
-        String s_address;
-        String s_type;
-        String s_start_date;
-        String s_end_date;
-
-
-    }
-
-    //9
-    public class statistics{
-        String stat_id;
-        String stat_type;
-        int stat_wins;
-        int stat_loss;
-        int stat_draw;
-        int stat_goals;
-        int stat_assist;
-        int stat_attempt;
-    } 
-
+    public void calculate()  //calculating all the parameters
+     {
+        float HRA=(10/100)*p_salary;
+        float DA=(73/100)*p_salary;
+        float GS=p_salary+DA+HRA;
+        float incometax=(30/100)*GS;
+        float netsalary=GS-incometax;
+     }
+        // void team()
+        // {
+        //     // selecting the players to the teams
+        // }
+        // void budge()
+        // {
+        //     //allocating the budget for the players and employees
+        // }
 }

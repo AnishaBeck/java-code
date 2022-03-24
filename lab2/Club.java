@@ -1,9 +1,9 @@
 import java.io.*;
 
-public class club{
+public class Club{
     //1
     public class players{
-    String pid;
+    int pid;
     String p_fname ;
     String p_lname;
     int p_age;
@@ -12,35 +12,41 @@ public class club{
     String p_contact;
     String p_address;
     float p_salary;
-    
-    players(String pid, String f, String l, int age, int jer, String pp, String contact, String address, float sal) 
+
+    players(int pid, String f, String l, int age, int jer, String pp, String contact, String address, float sal)
     {
-        pid = pid;
-        p_fname = f;
-        p_lname = l;
-        p_age = age;
-        jersey = jer;
-        play_position = pp;
-        p_contact = contact;
-        p_address = address;
-        p_salary = sal;
+        System.out.println("****Player Class****");
+        this.pid = pid;
+        this.p_fname = f;
+        this.p_lname = l;
+        this.p_age = age;
+        this.jersey = jer;
+        this.play_position = pp;
+        this.p_contact = contact;
+        this.p_address = address;
+        this.p_salary = sal;
+    }
+    void display()
+    {
+        System.out.println(" Id "+this.pid);
+        System.out.println(" First Name : "+this.p_fname);
+        System.out.println(" Last Name : "+this.p_lname);
+        System.out.println(" Age :  "+this.p_age);
+        System.out.println(" Contact : "+this.p_contact);
+        System.out.println(" Address : "+this.p_address);
+        System.out.println(" Salary : "+this.p_salary);
     }
 
-    public static void display(){
-        System.out.println("Player's details: " +pid+)
+    public void calculate()  //calculating all the parameters
+     {
+        float HRA=(10/100)*p_salary;
+        float DA=(73/100)*p_salary;
+        float GS=p_salary+DA+HRA;
+        float incometax=(30/100)*GS;
+        float netsalary=GS-incometax;
+     }
     }
-
-    public static void deleteplayer(String pid){
-        System.out.println("The "+ players.pid + "Name: "+p_fname+ " is being removed.");
-        players.remove(pid);
-        System.out.println("Player removed successfully!!!");
-    }
-
-    public static void editdeatail(String pid){
-
-    }
-    }
-
+    
     //2 
     public class manager{
         String mid;
@@ -52,51 +58,20 @@ public class club{
         String m_doj;
         String m_dor;
         float m_salary;
-    }
+        String schedule;
+   
+    public void calculate()  //calculating all the parameters
+     {
+        float HRA=(10/100)*m_salary;
+        float DA=(73/100)*m_salary;
+        float GS=m_salary+DA+HRA;
+        float incometax=(30/100)*GS;
+        float netsalary=GS-incometax;
+     }
 
-    //3
-    public class equipments{
-        String eqid;
-        String eq_name;
-        String eq_type;
-        int eq_quantity;
-        String availability;
-        String comments;
-    }
-
-    //6
-    public class expenses{
-        String eid;
-        String title;
-        String description;
-        String items;
-        int price;
-        int quantity;
-        int amount;
-        int total_amount;
-    }
-
-    //8
-    public class sponsers{
-        String sid;
-        String s_name;
-        String s_point_of_contact;
-        String s_contact;
-        String s_address;
-        String s_type;
-        String s_start_date;
-        String s_end_date;
-    }
-
-    //9
-    public class statistics{
-        String stat_id;
-        String stat_type;
-        int stat_wins;
-        int stat_loss;
-        int stat_draw;
-        int stat_goals;
-        int stat_assist;
-        int stat_attempt;
+    public void cal_experience()
+    {
+        
+    }    
     }
 }
