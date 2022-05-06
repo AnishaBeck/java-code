@@ -4,11 +4,18 @@ import java.io.Console;
 import java.io.IOException;
 import java.lang.ProcessBuilder;
 
-//recruitment 
-//match scheldule 
-//equipment purchases
+//interfaces
+/**
+ * calling
+ */
+interface calling {
+    void add_player();
+    double cal_sal();
+    void display();    
+}
 
-class players extends statistics{
+
+class players extends statistics implements calling{
     int pid;
     String p_fname ;
     String p_lname;
@@ -67,7 +74,7 @@ class players extends statistics{
         System.out.println("Contact :  "+p_phone_num+"\n\t"+p_email);
     }
 
-    double cal_sal()
+    public double cal_sal()
     {
                
         switch(Play_position)
