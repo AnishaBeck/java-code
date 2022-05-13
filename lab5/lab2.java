@@ -103,6 +103,7 @@ class players extends statistics implements club{
                 }
             catch(Exception e)
             {
+                System.out.println(e);
                 System.out.println(" Invalid Phone Number ");
             }
         }
@@ -380,9 +381,9 @@ public class lab2 {
     void player()
     {
         int choice;
-        Scanner sc=new Scanner(System.in);
+        Scanner sc=new Scanner(System.in); 
         do{
-            
+               
             System.out.println("* *  Player Menu * * ");
             System.out.println(" 1. Add Players \n 2. Edit Player Details \n 3. Display ALL \n 4.Exit ");
             System.out.print(" Your Choice is : "); 
