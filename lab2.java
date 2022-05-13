@@ -1,4 +1,4 @@
-//Lab 3 onwards:
+// Lab 3 onwards:
 
 import java.util.*;
 //import java.io.*;
@@ -6,6 +6,7 @@ import java.io.Console;
 //import java.io.IOException;
 import java.lang.ProcessBuilder;
 import java.util.Random; 
+
 
 class Invalid_position extends Exception
 {
@@ -16,8 +17,13 @@ class Invalid_position extends Exception
     }  
 }
 
+interface club
+{
+    final String name="Blue Badgers ";
+    abstract String getclub();
+}
 
-class players extends statistics{
+class players extends statistics implements club{
     int pid;
     String p_fname ;
     String p_lname;
@@ -30,6 +36,11 @@ class players extends statistics{
     String p_address;
     static Random rand = new Random();
 
+    //using interface
+    public String getclub()
+    {
+        return name;
+    }
     players(int id)
     {
         super(rand.nextInt(10),rand.nextInt(10),rand.nextInt(5),rand.nextInt(30),rand.nextInt(60));
@@ -46,8 +57,19 @@ class players extends statistics{
         p_fname=sc.nextLine();
         System.out.print("Enter the last name :  ");
         p_lname=sc.nextLine();
-        System.out.print("Enter age :  ");
-        p_age = sc.nextInt();sc.nextLine();
+        for(;;)
+        {
+            try{
+                System.out.print("Enter age :  ");
+                p_age = sc.nextInt();sc.nextLine();
+                break;
+            }
+            catch(Exception e )
+            {
+                System.out.println(" Invalid Age ");   
+            }
+        }
+       
         System.out.print("Enter the jersey number :  ");
         jersey = sc.nextLine();
         
@@ -87,8 +109,8 @@ class players extends statistics{
                 System.out.println(" Invalid Phone Number ");
             }
         }
-        System.out.print("Enter the phone number:  ");
-        p_phone_num = sc.nextDouble();sc.nextLine();
+        // System.out.print("Enter the phone number:  ");
+        // p_phone_num = sc.nextDouble();sc.nextLine();
         System.out.print("Enter the email :  ");
         p_email=sc.nextLine();
         System.out.print("Enter the address :  ");
@@ -103,7 +125,10 @@ class players extends statistics{
         System.out.println("Jersey No :  "+jersey);
         System.out.println("Contact :  "+p_phone_num+"\n\t"+p_email);
         System.out.println(" Salary : "+(cal_sal()));
-        super.display();
+        
+            System.out.println("Statistics: \nWins\t\tLoss\t\tDraw\t\tGoals\t\tAssist");
+            System.out.printf("\n%d\t\t%d\t\t%d\t\t%d\t\t%d",stat_wins, stat_loss, stat_draw, stat_goals, stat_assist);
+        
 
     }
    
@@ -214,10 +239,12 @@ class equipments{
             sc.close();
         }
     }
-    // void display()
-    // {
-        
-    // }
+    void display()
+    {
+        System.out.println(" Equipment Name  : "+eq_name);
+        System.out.println(" Equipment Type : "+eq_type);
+        System.out.println(" Equipment Availibility : "+avail_qty); 
+    }
     
     public void return_equip(int num)
     {
@@ -226,7 +253,7 @@ class equipments{
     }
 }
 
-class statistics {
+abstract class statistics {
     
     int stat_wins;
     int stat_loss;
@@ -249,11 +276,8 @@ class statistics {
         stat_assist = assist;
     }
 
-    void display()
-    {
-        System.out.println("Statistics: \nWins\t\tLoss\t\tDraw\t\tGoals\t\tAssist");
-        System.out.println("\n%d\t\t%d\t\t%d\t\t%d\t\t%d",stat_wins, stat_loss, stat_draw, stat_goals, stat_assist);
-    }
+    abstract void display();
+   
 
     
 }
@@ -274,24 +298,23 @@ class game
     }
     void display()
     {
-        System.out.println("Game ID: %d",game_id);
-        System.out.println("Competition Name: %s",g_name);
-        System.out.println("Competition Date: %s",g_date);
-        System.out.println("Status: %s",g_status);
+        System.out.printf("Game ID: %d",game_id);
+        System.out.printf("Competition Name: %s",g_name);
+        System.out.printf("Competition Date: %s",g_date);
+        System.out.printf("Status: %s",g_status);
         // System.out.println("Players: \n%d");
     }
-    void add_game()
+    void add_player()
     {
         
         Scanner sc=new Scanner(System.in);
         
         for(int i=0;i<15;i++)
         {
-            System.out.println("Enter game details:");
-            System.out.println("Competition Name: %s", g_name);
-            System.out.println("Date: %s",g_date);
-            System.out.println("Status: %s",g_status);
+           System.out.println(" Player id : ");
+           g_player[i]=sc.nextInt();sc.nextLine();
         }
+        System.out.println(" Added Player");
         sc.close();
     }
 
@@ -480,7 +503,7 @@ public class lab2 {
                     String Status=sc.nextLine();
                     System.out.println(" Enter the Team ");
                     games_played[n_games]=new game(game_id++,name,date,Status);
-                    games_played[n_games].add_game(); 
+                    games_played[n_games].add_player(); 
                     n_games++;
                     break;
             case 2: for(int i =0;i<n_games;i++)
@@ -513,7 +536,7 @@ public class lab2 {
         for(;;)
         {
             Scanner sc = new Scanner(System.in);
-            system.ClearConsole();
+           
             
             System.out.println(" User Name : ");
             usr=sc.nextLine();
@@ -566,14 +589,17 @@ public class lab2 {
         }
         
     }
+
+ 
     public static void main(String[] args) 
     {
         
         //System.out.println("length : "+args.length);
-        
+       
 
         Scanner sc = new Scanner(System.in);
         lab2 club=new lab2();
+        
         if(args.length==0)
         {
             login();
@@ -585,6 +611,7 @@ public class lab2 {
         int choice;
         do
         {
+            system.ClearConsole();
             System.out.println(" Welcome to Manager Menu ");
             System.out.println(" 1. Players \n 2. Equipments \n 3. Games \n 4. Logout \n");
             System.out.print(" Your Choice is : ");
