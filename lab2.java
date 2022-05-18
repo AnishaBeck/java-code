@@ -160,7 +160,6 @@ class players extends statistics implements club{
         return netsalary;
     }
 
-
 }
 
 class equipments{
@@ -286,6 +285,7 @@ class game
     String g_date;
     String g_status;
     int[] g_player = new int[15];
+    
     game(int id,String name,String date,String status)
     {
         game_id=id;
